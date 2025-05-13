@@ -6,7 +6,7 @@ if getGlobalTable().DRTPs then
 	return getGlobalTable().DRTPs
 end
 
-local network = loadstring(game:HttpGet("https://raw.githubusercontent.com/InfernusScripts/Null-Fire/refs/heads/main/Core/Libraries/Network/Main.lua"))()
+local network = loadstring(game:HttpGet("https://raw.githubusercontent.com/9-SK/Ambient/refs/heads/main/InteractionLib.lua"))()
 local plr = game:GetService("Players").LocalPlayer
 
 local teleports = {
