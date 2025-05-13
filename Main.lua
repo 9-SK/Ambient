@@ -8,7 +8,7 @@ local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local Workspace = game:GetService("Workspace")
 
 -- Load external teleport script safely
-local tps_success, tps = pcall(loadstring(game:HttpGet("https://raw.githubusercontent.com/InfernusScripts/Null-Fire/refs/heads/main/Core/Loaders/Dead-Rails/Teleports.lua", true)))
+local tps_success, tps = pcall(loadstring(game:HttpGet("https://raw.githubusercontent.com/9-SK/Ambient/refs/heads/main/Teleportscript.lua", true)))
 if not tps_success or not tps then
 	warn("Failed to load teleport script:", tps)
 	-- Decide how to handle failure (e.g., stop execution, notify user)
