@@ -1,8 +1,8 @@
 --[[
 
-viridian
+Sirius
 
-© 2024 viridian 
+© 2024 Sirius 
 All Rights Reserved.
 
 --]]
@@ -10,7 +10,7 @@ All Rights Reserved.
 
 --[[
 
-viridian Pre-Hyperion Todo List
+Sirius Pre-Hyperion Todo List
 
 High Priority
  - Invisible, Godmode
@@ -18,7 +18,7 @@ High Priority
  - Chat Spam Detection
  - Custom Script Prompts
  - Player Kill, Spectate and ESP via Playerlist
- - http.request support for viridian Intelligent HTTP Interception
+ - http.request support for Sirius Intelligent HTTP Interception
  - Performance Improvements to Roblox itself
  
 Moderate Priority
@@ -28,11 +28,11 @@ Moderate Priority
  - Chatlogs
  - GTA Serverhop
  - Anti-Spam (chat) formula, based on text length, caps, emojis etc.
- - Reduce any form of detection of viridian
+ - Reduce any form of detection of Sirius
  - Automated lowering of graphics on lower FPS, ensure no false positives
  
 Potential Future Setting Options
- - Block entire domain or just the specific page in the viridian Intelligent Flow Interception. Do this on case by case, e.g blocked = {"link.com", true} - true being whether its the domain or not
+ - Block entire domain or just the specific page in the Sirius Intelligent Flow Interception. Do this on case by case, e.g blocked = {"link.com", true} - true being whether its the domain or not
  - Serverhop type (default/gta)
  - Hook Specific Functions to reduce the need for external scripts
  
@@ -88,26 +88,103 @@ local espContainer = Instance.new("Folder", gethui and gethui() or coreGui)
 local oldVolume = gameSettings.MasterVolume
 
 -- Configurable Core Values
-local viridianValues = {
-	viridianVersion = "1.26",
-	viridianName = "viridian",
+local siriusValues = {
+	siriusVersion = "1.26",
+	siriusName = "Sirius",
 	releaseType = "Stable",
-	viridianFolder = "viridian",
+	siriusFolder = "Sirius",
 	settingsFile = "settings.srs",
 	interfaceAsset = 14183548964,
-	cdn = "https://cdn.sirius.menu/viridian-SCRIPT-CORE-ASSETS/",
-	icons = "https://cdn.sirius.menu/viridian-SCRIPT-CORE-ASSETS/Icons/",
+	cdn = "https://cdn.sirius.menu/SIRIUS-SCRIPT-CORE-ASSETS/",
+	icons = "https://cdn.sirius.menu/SIRIUS-SCRIPT-CORE-ASSETS/Icons/",
 	enableExperienceSync = false, -- Games are no longer available due to a lack of whitelisting, they may be made open source at a later date, however they are patched as of now and are useless to the end user. Turning this on may introduce "fake functionality".
 	games = {
-		DeadRails = {
-			name = "Dead Rails",
-			description = "Execute this script for an advantage ingame",
-			id = 116495829188952,
+		BreakingPoint = {
+			name = "Breaking Point",
+			description = "Players are seated around a table. Their only goal? To be the last one standing. Execute this script to gain an unfair advantage.",
+			id = 648362523,
 			enabled = true,
-			raw = "DeadRails",
+			raw = "BreakingPoint",
 			minimumTier = "Free",
 		},
-		
+		MurderMystery2 = {
+			name = "Murder Mystery 2",
+			description = "A murder has occured, will you be the one to find the murderer, or kill your next victim? Execute this script to gain an unfair advantage.",
+			id = 142823291,
+			enabled = true,
+			raw = "MurderMystery2",
+			minimumTier = "Free",
+		},
+		TowerOfHell = {
+			name = "Tower Of Hell",
+			description = "A difficult popular parkouring game, with random levels and modifiers. Execute this script to gain an unfair advantage.",
+			id = 1962086868,
+			enabled = true,
+			raw = "TowerOfHell",
+			minimumTier = "Free",
+		},
+		Strucid = {
+			name = "Strucid",
+			description = "Fight friends and enemies in Strucid with building mechanics! Execute this script to gain an unfair advantage.",
+			id = 2377868063,
+			enabled = true,
+			raw = "Strucid",
+			minimumTier = "Free",
+		},
+		PhantomForces = {
+			name = "Phantom Forces",
+			description = "One of the most popular FPS shooters from the team at StyLiS Studios. Execute this script to gain an unfair advantage.",
+			id = 292439477,
+			enabled = true,
+			raw = "PhantomForces",
+			minimumTier = "Pro",
+		},
+	},
+	rawTree = "https://raw.githubusercontent.com/SiriusSoftwareLtd/Sirius/Sirius/games/",
+	neonModule = "https://raw.githubusercontent.com/shlexware/Sirius/request/library/neon.lua",
+	senseRaw = "https://raw.githubusercontent.com/shlexware/Sirius/request/library/sense/source.lua",
+	executors = {"synapse x", "script-ware", "krnl", "scriptware", "comet", "valyse", "fluxus", "electron", "hydrogen"},
+	disconnectTypes = { {"ban", {"ban", "perm"}}, {"network", {"internet connection", "network"}} },
+	nameGeneration = {
+		adjectives = {"Cool", "Awesome", "Epic", "Ninja", "Super", "Mystic", "Swift", "Golden", "Diamond", "Silver", "Mint", "Roblox", "Amazing"},
+		nouns = {"Player", "Gamer", "Master", "Legend", "Hero", "Ninja", "Wizard", "Champion", "Warrior", "Sorcerer"}
+	},
+	administratorRoles = {"mod","admin","staff","dev","founder","owner","supervis","manager","management","executive","president","chairman","chairwoman","chairperson","director"},
+	transparencyProperties = {
+		UIStroke = {'Transparency'},
+		Frame = {'BackgroundTransparency'},
+		TextButton = {'BackgroundTransparency', 'TextTransparency'},
+		TextLabel = {'BackgroundTransparency', 'TextTransparency'},
+		TextBox = {'BackgroundTransparency', 'TextTransparency'},
+		ImageLabel = {'BackgroundTransparency', 'ImageTransparency'},
+		ImageButton = {'BackgroundTransparency', 'ImageTransparency'},
+		ScrollingFrame = {'BackgroundTransparency', 'ScrollBarImageTransparency'}
+	},
+	buttonPositions = {Character = UDim2.new(0.5, -155, 1, -29), Scripts = UDim2.new(0.5, -122, 1, -29), Playerlist = UDim2.new(0.5, -68, 1, -29)},
+	chatSpy = {
+		enabled = true,
+		visual = {
+			Color = Color3.fromRGB(26, 148, 255),
+			Font = Enum.Font.SourceSansBold,
+			TextSize = 18
+		},
+	},
+	pingProfile = {
+		recentPings = {},
+		adaptiveBaselinePings = {},
+		pingNotificationCooldown = 0,
+		maxSamples = 12, -- max num of recent pings stored
+		spikeThreshold = 1.75, -- high Ping in comparison to average ping (e.g 100 avg would be high at 150)
+		adaptiveBaselineSamples = 30, -- how many samples Sirius takes before deciding on a fixed high ping value
+		adaptiveHighPingThreshold = 120 -- default value
+	},
+	frameProfile = {
+		frameNotificationCooldown = 0,
+		fpsQueueSize = 10,
+		lowFPSThreshold = 20, -- what's low fps!??!?!
+		totalFPS = 0,
+		fpsQueue = {},
+	},
 	actions = {
 		{
 			name = "Noclip",
@@ -307,16 +384,16 @@ local viridianValues = {
 	}
 }
 
-local viridianSettings = {
+local siriusSettings = {
 	{
 		name = 'General',
-		description = 'The general settings for viridian, from simple to unique features.',
+		description = 'The general settings for Sirius, from simple to unique features.',
 		color = Color3.new(0.117647, 0.490196, 0.72549),
 		minimumLicense = 'Free',
 		categorySettings = {
 			{
 				name = 'Anonymous Client',
-				description = 'Randomise your username in real-time in any CoreGui parented interface, including viridian. You will still appear as your actual name to others in-game. This setting can be performance intensive.',
+				description = 'Randomise your username in real-time in any CoreGui parented interface, including Sirius. You will still appear as your actual name to others in-game. This setting can be performance intensive.',
 				settingType = 'Boolean',
 				current = false,
 
@@ -324,7 +401,7 @@ local viridianSettings = {
 			},
 			{
 				name = 'Chat Spy',
-				description = 'This will only work on the legacy Roblox chat system. viridian will display whispers usually hidden from you in the chat box.',
+				description = 'This will only work on the legacy Roblox chat system. Sirius will display whispers usually hidden from you in the chat box.',
 				settingType = 'Boolean',
 				current = true,
 
@@ -340,7 +417,7 @@ local viridianSettings = {
 			},
 			{
 				name = 'Now Playing Notifications',
-				description = 'When active, viridian will notify you when the next song in your Music queue plays.',
+				description = 'When active, Sirius will notify you when the next song in your Music queue plays.',
 				settingType = 'Boolean',
 				current = true,
 
@@ -377,7 +454,7 @@ local viridianSettings = {
 			},
 			{
 				name = 'Client-Based Anti Kick',
-				description = 'Cancel any kick request involving you sent by the client. This may prompt detection from Adonis or similar anti-cheats. You will need to rejoin and re-run viridian to toggle.',
+				description = 'Cancel any kick request involving you sent by the client. This may prompt detection from Adonis or similar anti-cheats. You will need to rejoin and re-run Sirius to toggle.',
 				settingType = 'Boolean',
 				current = false,
 
@@ -394,7 +471,7 @@ local viridianSettings = {
 	},
 	{
 		name = 'Keybinds',
-		description = 'Assign keybinds to actions or change keybinds such as the one to open/close viridian.',
+		description = 'Assign keybinds to actions or change keybinds such as the one to open/close Sirius.',
 		color = Color3.new(0.0941176, 0.686275, 0.509804),
 		minimumLicense = 'Free',
 		categorySettings = {
@@ -416,7 +493,7 @@ local viridianSettings = {
 				current = nil,
 				id = 'noclip',
 				callback = function()
-					local noclip = viridianValues.actions[1]
+					local noclip = siriusValues.actions[1]
 					noclip.enabled = not noclip.enabled
 					noclip.callback(noclip.enabled)
 				end
@@ -427,7 +504,7 @@ local viridianSettings = {
 				current = nil,
 				id = 'flight',
 				callback = function()
-					local flight = viridianValues.actions[2]
+					local flight = siriusValues.actions[2]
 					flight.enabled = not flight.enabled
 					flight.callback(flight.enabled)
 				end
@@ -438,7 +515,7 @@ local viridianSettings = {
 				current = nil,
 				id = 'refresh',
 				callback = function()
-					local refresh = viridianValues.actions[3]
+					local refresh = siriusValues.actions[3]
 					if not refresh.enabled then
 						refresh.enabled = true
 						refresh.callback()
@@ -451,7 +528,7 @@ local viridianSettings = {
 				current = nil,
 				id = 'respawn',
 				callback = function()
-					local respawn = viridianValues.actions[4]
+					local respawn = siriusValues.actions[4]
 					if not respawn.enabled then
 						respawn.enabled = true
 						respawn.callback()
@@ -464,7 +541,7 @@ local viridianSettings = {
 				current = nil,
 				id = 'invulnerability',
 				callback = function()
-					local invulnerability = viridianValues.actions[5]
+					local invulnerability = siriusValues.actions[5]
 					invulnerability.enabled = not invulnerability.enabled
 					invulnerability.callback(invulnerability.enabled)
 				end
@@ -475,7 +552,7 @@ local viridianSettings = {
 				current = nil,
 				id = 'fling',
 				callback = function()
-					local fling = viridianValues.actions[6]
+					local fling = siriusValues.actions[6]
 					fling.enabled = not fling.enabled
 					fling.callback(fling.enabled)
 				end
@@ -486,7 +563,7 @@ local viridianSettings = {
 				current = nil,
 				id = 'esp',
 				callback = function()
-					local esp = viridianValues.actions[7]
+					local esp = siriusValues.actions[7]
 					esp.enabled = not esp.enabled
 					esp.callback(esp.enabled)
 				end
@@ -497,7 +574,7 @@ local viridianSettings = {
 				current = nil,
 				id = 'nightandday',
 				callback = function()
-					local nightandday = viridianValues.actions[8]
+					local nightandday = siriusValues.actions[8]
 					nightandday.enabled = not nightandday.enabled
 					nightandday.callback(nightandday.enabled)
 				end
@@ -508,7 +585,7 @@ local viridianSettings = {
 				current = nil,
 				id = 'globalaudio',
 				callback = function()
-					local globalaudio = viridianValues.actions[9]
+					local globalaudio = siriusValues.actions[9]
 					globalaudio.enabled = not globalaudio.enabled
 					globalaudio.callback(globalaudio.enabled)
 				end
@@ -519,7 +596,7 @@ local viridianSettings = {
 				current = nil,
 				id = 'visibility',
 				callback = function()
-					local visibility = viridianValues.actions[10]
+					local visibility = siriusValues.actions[10]
 					visibility.enabled = not visibility.enabled
 					visibility.callback(visibility.enabled)
 				end
@@ -528,13 +605,13 @@ local viridianSettings = {
 	},
 	{
 		name = 'Performance',
-		description = 'Tweak and test your performance settings for Roblox in viridian.',
+		description = 'Tweak and test your performance settings for Roblox in Sirius.',
 		color = Color3.new(1, 0.376471, 0.168627),
 		minimumLicense = 'Free',
 		categorySettings = {
 			{
 				name = 'Artificial FPS Limit',
-				description = 'viridian will automatically set your FPS to this number when you are tabbed-in to Roblox.',
+				description = 'Sirius will automatically set your FPS to this number when you are tabbed-in to Roblox.',
 				settingType = 'Number',
 				values = {20, 5000},
 				current = 240,
@@ -543,7 +620,7 @@ local viridianSettings = {
 			},
 			{
 				name = 'Limit FPS while unfocused',
-				description = 'viridian will automatically set your FPS to 60 when you tab-out or unfocus from Roblox.',
+				description = 'Sirius will automatically set your FPS to 60 when you tab-out or unfocus from Roblox.',
 				settingType = 'Boolean', -- number for the cap below!! with min and max val
 				current = true,
 
@@ -551,7 +628,7 @@ local viridianSettings = {
 			},
 			{
 				name = 'Adaptive Latency Warning',
-				description = 'viridian will check your average latency in the background and notify you if your current latency significantly goes above your average latency.',
+				description = 'Sirius will check your average latency in the background and notify you if your current latency significantly goes above your average latency.',
 				settingType = 'Boolean',
 				current = true,
 
@@ -559,7 +636,7 @@ local viridianSettings = {
 			},
 			{
 				name = 'Adaptive Performance Warning',
-				description = 'viridian will check your average FPS in the background and notify you if your current FPS goes below a specific number.',
+				description = 'Sirius will check your average FPS in the background and notify you if your current FPS goes below a specific number.',
 				settingType = 'Boolean',
 				current = true,
 
@@ -569,7 +646,7 @@ local viridianSettings = {
 	},
 	{
 		name = 'Detections',
-		description = 'viridian detects and prevents anything malicious or possibly harmful to your wellbeing.',
+		description = 'Sirius detects and prevents anything malicious or possibly harmful to your wellbeing.',
 		color = Color3.new(0.705882, 0, 0),
 		minimumLicense = 'Free',
 		categorySettings = {
@@ -594,7 +671,7 @@ local viridianSettings = {
 			},
 			{
 				name = 'Moderator Detection',
-				description = 'Be notified whenever viridian detects a player joins your session that could be a game moderator.',
+				description = 'Be notified whenever Sirius detects a player joins your session that could be a game moderator.',
 				settingType = 'Boolean', 
 				minimumLicense = 'Pro',
 				current = true,
@@ -664,20 +741,20 @@ local viridianSettings = {
 }
 
 -- Generate random username
-local randomAdjective = viridianValues.nameGeneration.adjectives[math.random(1, #viridianValues.nameGeneration.adjectives)]
-local randomNoun = viridianValues.nameGeneration.nouns[math.random(1, #viridianValues.nameGeneration.nouns)]
+local randomAdjective = siriusValues.nameGeneration.adjectives[math.random(1, #siriusValues.nameGeneration.adjectives)]
+local randomNoun = siriusValues.nameGeneration.nouns[math.random(1, #siriusValues.nameGeneration.nouns)]
 local randomNumber = math.random(100, 3999) -- You can customize the range
 local randomUsername = randomAdjective .. randomNoun .. randomNumber
 
--- Initialise viridian Client Interface
+-- Initialise Sirius Client Interface
 local guiParent = gethui and gethui() or coreGui
-local viridian = guiParent:FindFirstChild("viridian")
-if viridian then
-	viridian:Destroy()
+local sirius = guiParent:FindFirstChild("Sirius")
+if sirius then
+	sirius:Destroy()
 end
 
-local UI = game:GetObjects('rbxassetid://'..viridianValues.interfaceAsset)[1]
-UI.Name = viridianValues.viridianName
+local UI = game:GetObjects('rbxassetid://'..siriusValues.interfaceAsset)[1]
+UI.Name = siriusValues.siriusName
 UI.Parent = guiParent
 UI.Enabled = false
 
@@ -711,14 +788,14 @@ local originalSetClipboard = getgenv()[indexSetClipboard]
 local index = http_request and "http_request" or "request"
 local originalRequest = getgenv()[index]
 
--- put this into viridianValues, like the fps and ping shit
+-- put this into siriusValues, like the fps and ping shit
 local suppressedSounds = {}
 local soundSuppressionNotificationCooldown = 0
 local soundInstances = {}
 local cachedIds = {}
 local cachedText = {}
 
-if not getMessage then viridianValues.chatSpy.enabled = false end
+if not getMessage then siriusValues.chatSpy.enabled = false end
 
 -- Call External Modules
 
@@ -953,22 +1030,22 @@ local httpRequest = originalRequest
 
 --end)()
 
--- viridian Functions
-local function checkviridian() return UI.Parent end
+-- Sirius Functions
+local function checkSirius() return UI.Parent end
 local function getPing() return math.clamp(statsService.Network.ServerStatsItem["Data Ping"]:GetValue(), 10, 700) end
-local function checkFolder() if isfolder then if not isfolder(viridianValues.viridianFolder) then makefolder(viridianValues.viridianFolder) end if not isfolder(viridianValues.viridianFolder.."/Music") then makefolder(viridianValues.viridianFolder.."/Music") writefile(viridianValues.viridianFolder.."/Music/readme.txt", "Hey there! Place your MP3 or other audio files in this folder, and have the ability to play them through the viridian Music UI!") end if not isfolder(viridianValues.viridianFolder.."/Assets/Icons") then makefolder(viridianValues.viridianFolder.."/Assets/Icons") end if not isfolder(viridianValues.viridianFolder.."/Assets") then makefolder(viridianValues.viridianFolder.."/Assets") end end end
+local function checkFolder() if isfolder then if not isfolder(siriusValues.siriusFolder) then makefolder(siriusValues.siriusFolder) end if not isfolder(siriusValues.siriusFolder.."/Music") then makefolder(siriusValues.siriusFolder.."/Music") writefile(siriusValues.siriusFolder.."/Music/readme.txt", "Hey there! Place your MP3 or other audio files in this folder, and have the ability to play them through the Sirius Music UI!") end if not isfolder(siriusValues.siriusFolder.."/Assets/Icons") then makefolder(siriusValues.siriusFolder.."/Assets/Icons") end if not isfolder(siriusValues.siriusFolder.."/Assets") then makefolder(siriusValues.siriusFolder.."/Assets") end end end
 local function isPanel(name) return not table.find({"Home", "Music", "Settings"}, name) end
 
 local function fetchFromCDN(path, write, savePath)
 	pcall(function()
 		checkFolder()
 
-		local file = game:HttpGet(viridianValues.cdn..path) or nil
+		local file = game:HttpGet(siriusValues.cdn..path) or nil
 		if not file then return end
 		if not write then return file end
 
 
-		writefile(viridianValues.viridianFolder.."/"..savePath, file)
+		writefile(siriusValues.siriusFolder.."/"..savePath, file)
 
 		return
 	end)
@@ -978,8 +1055,8 @@ local function fetchIcon(iconName)
 	pcall(function()
 		checkFolder()
 
-		local pathCDN = viridianValues.icons..iconName..".png"
-		local path = viridianValues.viridianFolder.."/Assets/"..iconName..".png"
+		local pathCDN = siriusValues.icons..iconName..".png"
+		local path = siriusValues.siriusFolder.."/Assets/"..iconName..".png"
 
 		if not isfile(path) then
 			local file = game:HttpGet(pathCDN)
@@ -1005,7 +1082,7 @@ local function undoAnonymousChanges()
 end
 
 local function createEsp(player)
-	if player == localPlayer or not checkviridian() then 
+	if player == localPlayer or not checkSirius() then 
 		return
 	end
 
@@ -1015,11 +1092,11 @@ local function createEsp(player)
 	highlight.OutlineColor = Color3.new(1,1,1)
 	highlight.Adornee = player.Character
 	highlight.Name = player.Name
-	highlight.Enabled = viridianValues.actions[7].enabled
+	highlight.Enabled = siriusValues.actions[7].enabled
 	highlight.Parent = espContainer
 
 	player.CharacterAdded:Connect(function(character)
-		if not checkviridian() then return end
+		if not checkSirius() then return end
 		task.wait()
 		highlight.Adornee = character
 	end)
@@ -1070,7 +1147,7 @@ end
 local function checkAction(target)
 	local toReturn = {}
 
-	for _, action in ipairs(viridianValues.actions) do
+	for _, action in ipairs(siriusValues.actions) do
 		if action.name == target then
 			toReturn.action = action
 			break
@@ -1088,7 +1165,7 @@ local function checkAction(target)
 end
 
 local function checkSetting(settingTarget, categoryTarget)
-	for _, category in ipairs(viridianSettings) do
+	for _, category in ipairs(siriusSettings) do
 		if categoryTarget then
 			if category.name == categoryTarget then
 				for _, setting in ipairs(category.categorySettings) do
@@ -1109,7 +1186,7 @@ local function checkSetting(settingTarget, categoryTarget)
 end
 
 local function wipeTransparency(ins, target, checkSelf, tween, duration)
-	local transparencyProperties = viridianValues.transparencyProperties
+	local transparencyProperties = siriusValues.transparencyProperties
 
 	local function applyTransparency(obj)
 		local properties = transparencyProperties[obj.className]
@@ -1143,13 +1220,13 @@ end
 
 local function blurSignature(value)
 	if not value then
-		if lighting:FindFirstChild("viridianBlur") then
-			lighting:FindFirstChild("viridianBlur"):Destroy()
+		if lighting:FindFirstChild("SiriusBlur") then
+			lighting:FindFirstChild("SiriusBlur"):Destroy()
 		end
 	else
-		if not lighting:FindFirstChild("viridianBlur") then
+		if not lighting:FindFirstChild("SiriusBlur") then
 			local blurLight = Instance.new("DepthOfFieldEffect", lighting)
-			blurLight.Name = "viridianBlur"
+			blurLight.Name = "SiriusBlur"
 			blurLight.Enabled = true
 			blurLight.FarIntensity = 0
 			blurLight.FocusDistance = 51.6
@@ -1160,7 +1237,7 @@ local function blurSignature(value)
 end
 
 local function figureNotifications()
-	if checkviridian() then
+	if checkSirius() then
 		local notificationsSize = 0
 
 		if #notifications > 0 then
@@ -1190,7 +1267,7 @@ local contentProvider = game:GetService("ContentProvider")
 
 local function queueNotification(Title, Description, Image)
 	task.spawn(function()		
-		if checkviridian() then
+		if checkSirius() then
 			local newNotification = notificationContainer.Template:Clone()
 			newNotification.Parent = notificationContainer
 			newNotification.Name = Title or "Unknown Title"
@@ -1280,21 +1357,21 @@ end
 local function checkLastVersion()
 	checkFolder()
 
-	local lastVersion = isfile and isfile(viridianValues.viridianFolder.."/".."version.srs") and readfile(viridianValues.viridianFolder.."/".."version.srs") or nil
+	local lastVersion = isfile and isfile(siriusValues.siriusFolder.."/".."version.srs") and readfile(siriusValues.siriusFolder.."/".."version.srs") or nil
 
 	if lastVersion then
-		if lastVersion ~= viridianValues.viridianVersion then queueNotification("viridian has been updated", "viridian has been updated to version "..viridianValues.viridianVersion..", check our Discord for all new features and changes.", 4400701828)  end
+		if lastVersion ~= siriusValues.siriusVersion then queueNotification("Sirius has been updated", "Sirius has been updated to version "..siriusValues.siriusVersion..", check our Discord for all new features and changes.", 4400701828)  end
 	end
 
-	if writefile then writefile(viridianValues.viridianFolder.."/".."version.srs", viridianValues.viridianVersion) end
+	if writefile then writefile(siriusValues.siriusFolder.."/".."version.srs", siriusValues.siriusVersion) end
 end
 
 local function removeReverbs(timing)
 	timing = timing or 0.65
 
 	for index, sound in next, soundInstances do
-		if sound:FindFirstChild("viridianAudioProfile") then
-			local reverb = sound:FindFirstChild("viridianAudioProfile")
+		if sound:FindFirstChild("SiriusAudioProfile") then
+			local reverb = sound:FindFirstChild("SiriusAudioProfile")
 			tweenService:Create(reverb, TweenInfo.new(timing, Enum.EasingStyle.Exponential), {HighGain = 0}):Play()
 			tweenService:Create(reverb, TweenInfo.new(timing, Enum.EasingStyle.Exponential), {LowGain = 0}):Play()
 			tweenService:Create(reverb, TweenInfo.new(timing, Enum.EasingStyle.Exponential), {MidGain = 0}):Play()
@@ -1315,7 +1392,7 @@ local function playNext()
 	end
 
 	musicPanel.Menu.TogglePlaying.ImageRectOffset = currentAudio.Playing and Vector2.new(804, 124) or Vector2.new(764, 244)
-	local asset = getcustomasset(viridianValues.viridianFolder.."/Music/"..musicQueue[1].sound)
+	local asset = getcustomasset(siriusValues.siriusFolder.."/Music/"..musicQueue[1].sound)
 
 	if checkSetting("Now Playing Notifications").current then queueNotification("Now Playing", musicQueue[1].sound, 4400695581) end
 
@@ -1337,7 +1414,7 @@ end
 local function addToQueue(file)
 	if not getcustomasset then return end
 	checkFolder()
-	if not isfile(viridianValues.viridianFolder.."/Music/"..file) then queueNotification("Unable to locate file", "Please ensure that your audio file is in the viridian/Music folder and that you are including the file extension (e.g mp3 or ogg).", 4370341699) return end
+	if not isfile(siriusValues.siriusFolder.."/Music/"..file) then queueNotification("Unable to locate file", "Please ensure that your audio file is in the Sirius/Music folder and that you are including the file extension (e.g mp3 or ogg).", 4370341699) return end
 	musicPanel.AddBox.Input.Text = ""
 
 	local newAudio = musicPanel.Queue.List.Template:Clone()
@@ -1356,7 +1433,7 @@ local function addToQueue(file)
 	table.insert(musicQueue, {sound = file, instanceName = newAudio.Name})
 
 	local getLength = Instance.new("Sound", workspace)
-	getLength.SoundId = getcustomasset(viridianValues.viridianFolder.."/Music/"..file)
+	getLength.SoundId = getcustomasset(siriusValues.siriusFolder.."/Music/"..file)
 	getLength.Volume = 0
 	getLength:Play()
 	task.wait(0.05)
@@ -1421,10 +1498,10 @@ end
 
 local function createReverb(timing)
 	for index, sound in next, soundInstances do
-		if not sound:FindFirstChild("viridianAudioProfile") then
+		if not sound:FindFirstChild("SiriusAudioProfile") then
 			local reverb = Instance.new("EqualizerSoundEffect")
 
-			reverb.Name = "viridianAudioProfile"
+			reverb.Name = "SiriusAudioProfile"
 			reverb.Parent = sound
 
 			reverb.Enabled = false
@@ -1448,14 +1525,14 @@ local function runScript(raw)
 end
 
 local function syncExperienceInformation()
-	viridianValues.currentCreator = creatorId
+	siriusValues.currentCreator = creatorId
 
 	if creatorType == Enum.CreatorType.Group then
-		viridianValues.currentGroup = creatorId
-		viridianValues.currentCreator = "group"
+		siriusValues.currentGroup = creatorId
+		siriusValues.currentCreator = "group"
 	end
 
-	for _, gameFound in pairs(viridianValues.games) do
+	for _, gameFound in pairs(siriusValues.games) do
 		if gameFound.id == placeId and gameFound.enabled then
 
 			local minimumTier = gameFound.minimumTier
@@ -1470,8 +1547,8 @@ local function syncExperienceInformation()
 				end
 			end
 
-			local rawFile = viridianValues.rawTree..gameFound.raw
-			viridianValues.currentGame = gameFound
+			local rawFile = siriusValues.rawTree..gameFound.raw
+			siriusValues.currentGame = gameFound
 
 			gameDetectionPrompt.ScriptTitle.Text = gameFound.name
 			gameDetectionPrompt.Layer.ScriptSubtitle.Text = gameFound.description
@@ -1539,7 +1616,7 @@ local function syncExperienceInformation()
 
 			gameDetectionPrompt.Layer.Run.MouseButton1Click:Connect(function()
 				closeGameDetection()
-				queueNotification("Running "..gameFound.name, "Now running viridian' "..gameFound.name.." script, this may take a moment.", 4400701828)
+				queueNotification("Running "..gameFound.name, "Now running Sirius' "..gameFound.name.." script, this may take a moment.", 4400701828)
 				runScript(rawFile)
 
 			end)
@@ -1554,7 +1631,7 @@ local function syncExperienceInformation()
 end
 
 local function updateSliderPadding()
-	for _, v in pairs(viridianValues.sliders) do
+	for _, v in pairs(siriusValues.sliders) do
 		v.padding = {
 			v.object.Interact.AbsolutePosition.X,
 			v.object.Interact.AbsolutePosition.X + v.object.Interact.AbsoluteSize.X
@@ -1586,7 +1663,7 @@ local function updateSlider(data, setValue, forceValue)
 end
 
 local function resetSliders()
-	for _, v in pairs(viridianValues.sliders) do
+	for _, v in pairs(siriusValues.sliders) do
 		updateSlider(v, v.default, true)
 	end
 end
@@ -1595,7 +1672,7 @@ local function sortActions()
 	characterPanel.Interactions.Grid.Template.Visible = false
 	characterPanel.Interactions.Sliders.Template.Visible = false
 
-	for _, action in ipairs(viridianValues.actions) do
+	for _, action in ipairs(siriusValues.actions) do
 		local newAction = characterPanel.Interactions.Grid.Template:Clone()
 		newAction.Name = action.name
 		newAction.Parent = characterPanel.Interactions.Grid
@@ -1663,7 +1740,7 @@ local function sortActions()
 			end)
 
 			if not success then
-				queueNotification("Action Error", "This action ('"..(action.name).."') had an error while running, please report this to the viridian team at getviridian.com/discord", 4370336704)
+				queueNotification("Action Error", "This action ('"..(action.name).."') had an error while running, please report this to the Sirius team at sirius.menu/discord", 4370336704)
 				action.enabled = false
 				newAction.Icon.Image = "rbxassetid://"..action.images[2]
 				tweenService:Create(newAction, TweenInfo.new(0.4, Enum.EasingStyle.Exponential), {BackgroundTransparency = 0.55}):Play()
@@ -1675,14 +1752,14 @@ local function sortActions()
 
 	if localPlayer.Character then
 		if not localPlayer.Character:FindFirstChildOfClass('Humanoid').UseJumpPower then
-			viridianValues.sliders[2].name = "jump height"
-			viridianValues.sliders[2].default = 7.2
-			viridianValues.sliders[2].values = {0, 120}
+			siriusValues.sliders[2].name = "jump height"
+			siriusValues.sliders[2].default = 7.2
+			siriusValues.sliders[2].values = {0, 120}
 		end
 	end
 
 
-	for _, slider in ipairs(viridianValues.sliders) do
+	for _, slider in ipairs(siriusValues.sliders) do
 		local newSlider = characterPanel.Interactions.Sliders.Template:Clone()
 		newSlider.Name = slider.name.." Slider"
 		newSlider.Parent = characterPanel.Interactions.Sliders
@@ -1714,7 +1791,7 @@ local function sortActions()
 		end)
 
 		newSlider.Interact.MouseButton1Down:Connect(function()
-			if debounce or not checkviridian() then return end
+			if debounce or not checkSirius() then return end
 
 			slider.active = true
 			updateSlider(slider)
@@ -1729,10 +1806,10 @@ local function sortActions()
 end
 
 local function getAdaptiveHighPingThreshold()
-	local adaptiveBaselinePings = viridianValues.pingProfile.adaptiveBaselinePings
+	local adaptiveBaselinePings = siriusValues.pingProfile.adaptiveBaselinePings
 
 	if #adaptiveBaselinePings == 0 then
-		return viridianValues.pingProfile.adaptiveHighPingThreshold
+		return siriusValues.pingProfile.adaptiveHighPingThreshold
 	end
 
 	table.sort(adaptiveBaselinePings)
@@ -1743,21 +1820,21 @@ local function getAdaptiveHighPingThreshold()
 		median = adaptiveBaselinePings[math.ceil(#adaptiveBaselinePings/2)]
 	end
 
-	return median * viridianValues.pingProfile.spikeThreshold
+	return median * siriusValues.pingProfile.spikeThreshold
 end
 
 local function checkHighPing()
-	local recentPings = viridianValues.pingProfile.recentPings
-	local adaptiveBaselinePings = viridianValues.pingProfile.adaptiveBaselinePings
+	local recentPings = siriusValues.pingProfile.recentPings
+	local adaptiveBaselinePings = siriusValues.pingProfile.adaptiveBaselinePings
 
 	local currentPing = getPing()
 	table.insert(recentPings, currentPing)
 
-	if #recentPings > viridianValues.pingProfile.maxSamples then
+	if #recentPings > siriusValues.pingProfile.maxSamples then
 		table.remove(recentPings, 1)
 	end
 
-	if #adaptiveBaselinePings < viridianValues.pingProfile.adaptiveBaselineSamples then
+	if #adaptiveBaselinePings < siriusValues.pingProfile.adaptiveBaselineSamples then
 		if currentPing >= 350 then currentPing = 300 end
 
 		table.insert(adaptiveBaselinePings, currentPing)
@@ -1882,7 +1959,7 @@ local function closePanel(panelName, openingOther)
 
 		tweenService:Create(panel, TweenInfo.new(0.75, Enum.EasingStyle.Exponential, Enum.EasingDirection.InOut), {BackgroundTransparency = 1}):Play()
 		tweenService:Create(panel, TweenInfo.new(1.1, Enum.EasingStyle.Exponential, Enum.EasingDirection.Out), {Size = button.Size}):Play()
-		tweenService:Create(panel, TweenInfo.new(0.65, Enum.EasingStyle.Quint, Enum.EasingDirection.InOut), {Position = viridianValues.buttonPositions[panelName]}):Play()
+		tweenService:Create(panel, TweenInfo.new(0.65, Enum.EasingStyle.Quint, Enum.EasingDirection.InOut), {Position = siriusValues.buttonPositions[panelName]}):Play()
 		tweenService:Create(toggle, TweenInfo.new(0.6, Enum.EasingStyle.Quint, Enum.EasingDirection.InOut), {Position = UDim2.new(0.5, 0, 1, -85)}):Play()
 	end
 
@@ -1921,7 +1998,7 @@ local function openPanel(panelName)
 	local panelSize = UDim2.new(0, 581, 0, 246)
 
 	panel.Size = button.Size
-	panel.Position = viridianValues.buttonPositions[panelName]
+	panel.Position = siriusValues.buttonPositions[panelName]
 
 	wipeTransparency(panel, 1, true)
 
@@ -1966,7 +2043,7 @@ local function openPanel(panelName)
 				local tweenTo
 				local name
 
-				for _, sliderFound in ipairs(viridianValues.sliders) do
+				for _, sliderFound in ipairs(siriusValues.sliders) do
 					if sliderFound.name.." Slider" == slider.Name then
 						tweenTo = sliderFound.value
 						name = sliderFound.name
@@ -1994,7 +2071,7 @@ local function openPanel(panelName)
 
 		for _, gridButton in ipairs(characterPanel.Interactions.Grid:GetChildren()) do
 			if gridButton.ClassName == "Frame" then 
-				for _, action in ipairs(viridianValues.actions) do
+				for _, action in ipairs(siriusValues.actions) do
 					if action.name == gridButton.Name then
 						if action.enabled then
 							tweenService:Create(gridButton, TweenInfo.new(0.6, Enum.EasingStyle.Quint), {BackgroundTransparency = 0.1}):Play()
@@ -2157,7 +2234,7 @@ local function checkFriends()
 			end
 		end
 
-		if not checkviridian() then return end
+		if not checkSirius() then return end
 
 		homeContainer.Interactions.Friends.All.Value.Text = tostring(friendsInTotal).." friends"
 		homeContainer.Interactions.Friends.Offline.Value.Text = tostring(friendsInTotal - onlineFriends).." friends"
@@ -2259,7 +2336,7 @@ function promptModerator(player, role)
 end
 
 local function UpdateHome()
-	if not checkviridian() then return end
+	if not checkSirius() then return end
 
 	local function format(Int)
 		return string.format("%02i", Int)
@@ -2296,7 +2373,7 @@ local function UpdateHome()
 
 	-- Update Executor
 	homeContainer.Interactions.Client.Title.Text = identifyexecutor()
-	if not table.find(viridianValues.executors, string.lower(identifyexecutor())) then
+	if not table.find(siriusValues.executors, string.lower(identifyexecutor())) then
 		homeContainer.Interactions.Client.Subtitle.Text = "This executor is not verified as supported - but may still work just fine."
 	end
 
@@ -2615,11 +2692,11 @@ local function extractDomain(link)
 end
 
 local function securityDetection(title, content, link, gradient, actions)
-	if not checkviridian() then return end
+	if not checkSirius() then return end
 
 	local domain = extractDomain(link) or link
 	checkFolder()
-	local currentAllowlist = isfile and isfile(viridianValues.viridianFolder.."/".."allowedLinks.srs") and readfile(viridianValues.viridianFolder.."/".."allowedLinks.srs") or nil
+	local currentAllowlist = isfile and isfile(siriusValues.siriusFolder.."/".."allowedLinks.srs") and readfile(siriusValues.siriusFolder.."/".."allowedLinks.srs") or nil
 	if currentAllowlist then currentAllowlist = httpService:JSONDecode(currentAllowlist) if table.find(currentAllowlist, domain) then return true end end
 
 	local newSecurityPrompt = securityPrompt:Clone()
@@ -2673,9 +2750,9 @@ local function securityDetection(title, content, link, gradient, actions)
 					checkFolder()
 					if currentAllowlist then
 						table.insert(currentAllowlist, domain)
-						writefile(viridianValues.viridianFolder.."/".."allowedLinks.srs", httpService:JSONEncode(currentAllowlist))
+						writefile(siriusValues.siriusFolder.."/".."allowedLinks.srs", httpService:JSONEncode(currentAllowlist))
 					else
-						writefile(viridianValues.viridianFolder.."/".."allowedLinks.srs", httpService:JSONEncode({domain}))
+						writefile(siriusValues.siriusFolder.."/".."allowedLinks.srs", httpService:JSONEncode({domain}))
 					end
 				end
 				decision = true
@@ -2720,9 +2797,9 @@ end
 
 if Essential or Pro then
 	getgenv()[index] = function(data)
-		if checkviridian() and checkSetting("Intelligent HTTP Interception").current then
+		if checkSirius() and checkSetting("Intelligent HTTP Interception").current then
 			local title = "Do you trust this source?"
-			local content = "viridian has prevented data from being sent off-client, would you like to allow data to be sent or retrieved from this source?"
+			local content = "Sirius has prevented data from being sent off-client, would you like to allow data to be sent or retrieved from this source?"
 			local url = data.Url or "Unknown Link"
 			local gradient = ColorSequence.new({ColorSequenceKeypoint.new(0, Color3.new(0, 0, 0)),ColorSequenceKeypoint.new(1, Color3.new(0.764706, 0.305882, 0.0941176))})
 			local actions = {{"Always Allow", true, true}, {"Allow just this once", true}, {"Don't Allow", false}}
@@ -2732,7 +2809,7 @@ if Essential or Pro then
 
 				if bodyDecoded.cmd == "INVITE_BROWSER" then
 					title = "Would you like to join this Discord server?"
-					content = "viridian has prevented your Discord client from automatically joining this Discord server, would you like to continue and join, or block it?"
+					content = "Sirius has prevented your Discord client from automatically joining this Discord server, would you like to continue and join, or block it?"
 					url = bodyDecoded.args and "discord.gg/"..bodyDecoded.args.code or "Unknown Invite"
 					gradient = ColorSequence.new({ColorSequenceKeypoint.new(0, Color3.new(0, 0, 0)),ColorSequenceKeypoint.new(1, Color3.new(0.345098, 0.396078, 0.94902))})
 					actions = {{"Allow", true}, {"Don't Allow", false}}
@@ -2753,9 +2830,9 @@ if Essential or Pro then
 	end
 
 	getgenv()[indexSetClipboard] = function(data)
-		if checkviridian() and checkSetting("Intelligent Clipboard Interception").current then
+		if checkSirius() and checkSetting("Intelligent Clipboard Interception").current then
 			local title = "Would you like to copy this to your clipboard?"
-			local content = "viridian has prevented a script from setting the below text to your clipboard, would you like to allow this, or prevent it from copying?"
+			local content = "Sirius has prevented a script from setting the below text to your clipboard, would you like to allow this, or prevent it from copying?"
 			local url = data or "Unknown Clipboard"
 			local gradient = ColorSequence.new({ColorSequenceKeypoint.new(0, Color3.new(0, 0, 0)),ColorSequenceKeypoint.new(1, Color3.new(0.776471, 0.611765, 0.529412))})
 			local actions = {{"Allow", true}, {"Don't Allow", false}}
@@ -2940,7 +3017,7 @@ local function closeSmartBar()
 end
 
 local function windowFocusChanged(value)
-	if checkviridian() then
+	if checkSirius() then
 		if value then -- Window Focused
 			setfpscap(tonumber(checkSetting("Artificial FPS Limit").current))
 			removeReverbs(0.5)
@@ -2952,10 +3029,10 @@ local function windowFocusChanged(value)
 end
 
 local function onChatted(player, message)
-	local enabled = checkSetting("Chat Spy").current and viridianValues.chatSpy.enabled
-	local chatSpyVisuals = viridianValues.chatSpy.visual
+	local enabled = checkSetting("Chat Spy").current and siriusValues.chatSpy.enabled
+	local chatSpyVisuals = siriusValues.chatSpy.visual
 
-	if not message or not checkviridian() then return end
+	if not message or not checkSirius() then return end
 
 	if enabled and player ~= localPlayer then
 		local message2 = message:gsub("[\n\r]",''):gsub("\t",' '):gsub("[ ]+",' ')
@@ -2972,7 +3049,7 @@ local function onChatted(player, message)
 		get:Disconnect()
 
 		if hidden and enabled then
-			chatSpyVisuals.Text = "viridian Spy - [".. player.Name .."]: "..message2
+			chatSpyVisuals.Text = "Sirius Spy - [".. player.Name .."]: "..message2
 			starterGui:SetCore("ChatMakeSystemMessage", chatSpyVisuals)
 		end
 	end
@@ -3038,7 +3115,7 @@ local function teleportTo(player)
 end
 
 local function createPlayer(player)
-	if not checkviridian() then return end
+	if not checkSirius() then return end
 
 	if playerlistPanel.Interactions.List:FindFirstChild(player.DisplayName) then return end
 
@@ -3187,7 +3264,7 @@ local function createPlayer(player)
 end
 
 local function removePlayer(player)
-	if not checkviridian() then return end
+	if not checkSirius() then return end
 
 	if playerlistPanel.Interactions.List:FindFirstChild(player.Name) then
 		playerlistPanel.Interactions.List:FindFirstChild(player.Name):Destroy()
@@ -3294,21 +3371,21 @@ end
 local function saveSettings()
 	checkFolder()
 
-	if isfile and isfile(viridianValues.viridianFolder.."/"..viridianValues.settingsFile) then
-		writefile(viridianValues.viridianFolder.."/"..viridianValues.settingsFile, httpService:JSONEncode(viridianSettings))
+	if isfile and isfile(siriusValues.siriusFolder.."/"..siriusValues.settingsFile) then
+		writefile(siriusValues.siriusFolder.."/"..siriusValues.settingsFile, httpService:JSONEncode(siriusSettings))
 	end
 end
 
 local function assembleSettings()
-	if isfile and isfile(viridianValues.viridianFolder.."/"..viridianValues.settingsFile) then
+	if isfile and isfile(siriusValues.siriusFolder.."/"..siriusValues.settingsFile) then
 		local currentSettings
 
 		local success, response = pcall(function()
-			currentSettings = httpService:JSONDecode(readfile(viridianValues.viridianFolder.."/"..viridianValues.settingsFile))
+			currentSettings = httpService:JSONDecode(readfile(siriusValues.siriusFolder.."/"..siriusValues.settingsFile))
 		end)
 
 		if success then
-			for _, liveCategory in ipairs(viridianSettings) do
+			for _, liveCategory in ipairs(siriusSettings) do
 				for _, liveSetting in ipairs(liveCategory.categorySettings) do
 					for _, category in ipairs(currentSettings) do
 						for _, setting in ipairs(category.categorySettings) do
@@ -3320,18 +3397,18 @@ local function assembleSettings()
 				end
 			end
 
-			writefile(viridianValues.viridianFolder.."/"..viridianValues.settingsFile, httpService:JSONEncode(viridianSettings)) -- Update file with any new settings added
+			writefile(siriusValues.siriusFolder.."/"..siriusValues.settingsFile, httpService:JSONEncode(siriusSettings)) -- Update file with any new settings added
 		end
 	else
 		if writefile then
 			checkFolder()
-			if not isfile(viridianValues.viridianFolder.."/"..viridianValues.settingsFile) then
-				writefile(viridianValues.viridianFolder.."/"..viridianValues.settingsFile, httpService:JSONEncode(viridianSettings))
+			if not isfile(siriusValues.siriusFolder.."/"..siriusValues.settingsFile) then
+				writefile(siriusValues.siriusFolder.."/"..siriusValues.settingsFile, httpService:JSONEncode(siriusSettings))
 			end
 		end 
 	end
 
-	for _, category in viridianSettings do
+	for _, category in siriusSettings do
 		local newCategory = settingsPanel.SettingTypes.Template:Clone()
 		newCategory.Name = category.name
 		newCategory.Title.Text = string.upper(category.name)
@@ -3437,7 +3514,7 @@ local function assembleSettings()
 					newSwitch.Interact.MouseButton1Click:Connect(function()
 						if minimumLicense then
 							if (minimumLicense == "Pro" and not Pro) or (minimumLicense == "Essential" and not (Pro or Essential)) then
-								queueNotification("This feature is locked", "You must be "..minimumLicense.." or higher to use "..setting.name..". \n\nUpgrade at https://getviridian.com.", 4483345875)
+								queueNotification("This feature is locked", "You must be "..minimumLicense.." or higher to use "..setting.name..". \n\nUpgrade at https://sirius.menu.", 4483345875)
 								return
 							end
 						end
@@ -3488,7 +3565,7 @@ local function assembleSettings()
 					newInput.InputFrame.InputBox.FocusLost:Connect(function()
 						if minimumLicense then
 							if (minimumLicense == "Pro" and not Pro) or (minimumLicense == "Essential" and not (Pro or Essential)) then
-								queueNotification("This feature is locked", "You must be "..minimumLicense.." or higher to use "..setting.name..". \n\nUpgrade at https://getviridian.com.", 4483345875)
+								queueNotification("This feature is locked", "You must be "..minimumLicense.." or higher to use "..setting.name..". \n\nUpgrade at https://sirius.menu.", 4483345875)
 								newInput.InputFrame.InputBox.Text = setting.current
 								return
 							end
@@ -3533,7 +3610,7 @@ local function assembleSettings()
 
 						if minimumLicense then
 							if (minimumLicense == "Pro" and not Pro) or (minimumLicense == "Essential" and not (Pro or Essential)) then
-								queueNotification("This feature is locked", "You must be "..minimumLicense.." or higher to use "..setting.name..". \n\nUpgrade at https://getviridian.com.", 4483345875)
+								queueNotification("This feature is locked", "You must be "..minimumLicense.." or higher to use "..setting.name..". \n\nUpgrade at https://sirius.menu.", 4483345875)
 								newInput.InputFrame.InputBox.Text = setting.current
 								return
 							end
@@ -3592,7 +3669,7 @@ local function assembleSettings()
 
 						if minimumLicense then
 							if (minimumLicense == "Pro" and not Pro) or (minimumLicense == "Essential" and not (Pro or Essential)) then
-								queueNotification("This feature is locked", "You must be "..minimumLicense.." or higher to use "..setting.name..". \n\nUpgrade at https://getviridian.com.", 4483345875)
+								queueNotification("This feature is locked", "You must be "..minimumLicense.." or higher to use "..setting.name..". \n\nUpgrade at https://sirius.menu.", 4483345875)
 								newKeybind.InputFrame.InputBox.Text = setting.current
 								return
 							end
@@ -3676,16 +3753,16 @@ local function initialiseAntiKick()
 			local originalNamecall
 
 			originalIndex = hookmetamethod(game, "__index", function(self, method)
-				if self == localPlayer and method:lower() == "kick" and checkSetting("Client-Based Anti Kick").current and checkviridian() then
-					queueNotification("Kick Prevented", "viridian has prevented you from being kicked by the client.", 4400699701)
+				if self == localPlayer and method:lower() == "kick" and checkSetting("Client-Based Anti Kick").current and checkSirius() then
+					queueNotification("Kick Prevented", "Sirius has prevented you from being kicked by the client.", 4400699701)
 					return error("Expected ':' not '.' calling member function Kick", 2)
 				end
 				return originalIndex(self, method)
 			end)
 
 			originalNamecall = hookmetamethod(game, "__namecall", function(self, ...)
-				if self == localPlayer and getnamecallmethod():lower() == "kick" and checkSetting("Client-Based Anti Kick").current and checkviridian() then
-					queueNotification("Kick Prevented", "viridian has prevented you from being kicked by the client.", 4400699701)
+				if self == localPlayer and getnamecallmethod():lower() == "kick" and checkSetting("Client-Based Anti Kick").current and checkSirius() then
+					queueNotification("Kick Prevented", "Sirius has prevented you from being kicked by the client.", 4400699701)
 					return
 				end
 				return originalNamecall(self, ...)
@@ -3696,7 +3773,7 @@ end
 
 local function boost()
 	local success, result = pcall(function()
-		loadstring(game:HttpGet('https://raw.githubusercontent.com/viridianSoftwareLtd/viridian/refs/heads/request/boost.lua'))()
+		loadstring(game:HttpGet('https://raw.githubusercontent.com/SiriusSoftwareLtd/Sirius/refs/heads/request/boost.lua'))()
 	end)
 
 	if not success then
@@ -3706,8 +3783,8 @@ local function boost()
 end
 
 local function start()
-	if viridianValues.releaseType == "Experimental" then -- Make this more secure.
-		if not Pro then localPlayer:Kick("This is an experimental release, you must be Pro to run this. \n\nUpgrade at https://getviridian.com") return end
+	if siriusValues.releaseType == "Experimental" then -- Make this more secure.
+		if not Pro then localPlayer:Kick("This is an experimental release, you must be Pro to run this. \n\nUpgrade at https://sirius.menu/") return end
 	end
 	windowFocusChanged(true)
 
@@ -3726,7 +3803,7 @@ local function start()
 
 	if not checkSetting("Load Hidden").current then 
 		--if checkSetting("Startup Sound Effect").current then
-		--	local startupPath = viridianValues.viridianFolder.."/Assets/startup.wav"
+		--	local startupPath = siriusValues.siriusFolder.."/Assets/startup.wav"
 		--	local startupAsset
 
 		--	if isfile(startupPath) then
@@ -3753,15 +3830,15 @@ local function start()
 	end
 
 	if script_key and not (Essential or Pro) then
-		queueNotification("License Error", "We've detected a key being placed above viridian loadstring, however your key seems to be invalid. Make a support request at getviridian.com/discord to get this solved within minutes.", "document-minus")
+		queueNotification("License Error", "We've detected a key being placed above Sirius loadstring, however your key seems to be invalid. Make a support request at sirius.menu/discord to get this solved within minutes.", "document-minus")
 	end
 
-	if viridianValues.enableExperienceSync then
+	if siriusValues.enableExperienceSync then
 		task.spawn(syncExperienceInformation) 
 	end
 end
 
--- viridian Events
+-- Sirius Events
 
 start()
 
@@ -3892,8 +3969,8 @@ end)
 
 homeContainer.Interactions.Discord.Interact.MouseButton1Click:Connect(function()
 	if setclipboard then 
-		originalSetClipboard("https://getviridian.com/discord")
-		queueNotification("Discord Invite Copied", "We've set your clipboard to the viridian discord invite.", 4335479121)
+		originalSetClipboard("https://sirius.menu/discord")
+		queueNotification("Discord Invite Copied", "We've set your clipboard to the Sirius discord invite.", 4335479121)
 	else
 		queueNotification("Unable to copy Discord invite", "Missing setclipboard() function, can't set data to your clipboard.", 4335479658)
 	end
@@ -3986,7 +4063,7 @@ for _, button in ipairs(smartBar.Buttons:GetChildren()) do
 end
 
 userInputService.InputBegan:Connect(function(input, processed)
-	if not checkviridian() then return end
+	if not checkSirius() then return end
 
 	if checkingForKey then
 		if input.KeyCode ~= Enum.KeyCode.Unknown then
@@ -4001,7 +4078,7 @@ userInputService.InputBegan:Connect(function(input, processed)
 		return
 	end
 
-	for _, category in ipairs(viridianSettings) do
+	for _, category in ipairs(siriusSettings) do
 		for _, setting in ipairs(category.categorySettings) do
 			if setting.settingType == "Key" then
 				if setting.current ~= nil and setting.current ~= "" then
@@ -4070,13 +4147,13 @@ userInputService.InputBegan:Connect(function(input, processed)
 end)
 
 userInputService.InputEnded:Connect(function(input, processed)
-	if not checkviridian() then return end
+	if not checkSirius() then return end
 
 	if input.UserInputType == Enum.UserInputType.MouseButton1 then
-		for _, slider in pairs(viridianValues.sliders) do
+		for _, slider in pairs(siriusValues.sliders) do
 			slider.active = false
 
-			if characterPanel.Visible and not debounce and slider.object and checkviridian() then
+			if characterPanel.Visible and not debounce and slider.object and checkSirius() then
 				tweenService:Create(slider.object, TweenInfo.new(0.4, Enum.EasingStyle.Exponential), {BackgroundTransparency = 0.8}):Play()
 				tweenService:Create(slider.object.UIStroke, TweenInfo.new(0.4, Enum.EasingStyle.Exponential), {Transparency = 0.5}):Play()
 				tweenService:Create(slider.object.Information, TweenInfo.new(0.4, Enum.EasingStyle.Exponential), {TextTransparency = 0.3}):Play()
@@ -4123,7 +4200,7 @@ scriptSearch.SearchBox.Focused:Connect(function()
 end)
 
 mouse.Move:Connect(function()
-	for _, slider in pairs(viridianValues.sliders) do
+	for _, slider in pairs(siriusValues.sliders) do
 		if slider.active then
 			updateSlider(slider)
 		end
@@ -4140,7 +4217,7 @@ for index, player in ipairs(players:GetPlayers()) do
 end
 
 players.PlayerAdded:Connect(function(player)
-	if not checkviridian() then return end
+	if not checkSirius() then return end
 
 	createPlayer(player)
 	createEsp(player)
@@ -4173,11 +4250,11 @@ players.PlayerAdded:Connect(function(player)
 	if checkSetting("Moderator Detection").current and Pro then
 		local roleFound = player:GetRoleInGroup(creatorId)
 
-		if viridianValues.currentCreator == "group" then
-			for _, role in pairs(viridianValues.administratorRoles) do 
+		if siriusValues.currentCreator == "group" then
+			for _, role in pairs(siriusValues.administratorRoles) do 
 				if string.find(string.lower(roleFound), role) then
 					promptModerator(player, roleFound)
-					queueNotification("Administrator Joined", viridianValues.currentGroup .." "..roleFound.." ".. player.DisplayName .." has joined your session", 3944670656) -- change to group name
+					queueNotification("Administrator Joined", siriusValues.currentGroup .." "..roleFound.." ".. player.DisplayName .." has joined your session", 3944670656) -- change to group name
 				end
 			end
 		end
@@ -4222,26 +4299,26 @@ players.PlayerRemoving:Connect(function(player)
 end)
 
 runService.RenderStepped:Connect(function(frame)
-	if not checkviridian() then return end
+	if not checkSirius() then return end
 	local fps = math.round(1/frame)
 
-	table.insert(viridianValues.frameProfile.fpsQueue, fps)
-	viridianValues.frameProfile.totalFPS += fps
+	table.insert(siriusValues.frameProfile.fpsQueue, fps)
+	siriusValues.frameProfile.totalFPS += fps
 
-	if #viridianValues.frameProfile.fpsQueue > viridianValues.frameProfile.fpsQueueSize then
-		viridianValues.frameProfile.totalFPS -= viridianValues.frameProfile.fpsQueue[1]
-		table.remove(viridianValues.frameProfile.fpsQueue, 1)
+	if #siriusValues.frameProfile.fpsQueue > siriusValues.frameProfile.fpsQueueSize then
+		siriusValues.frameProfile.totalFPS -= siriusValues.frameProfile.fpsQueue[1]
+		table.remove(siriusValues.frameProfile.fpsQueue, 1)
 	end
 end)
 
 runService.Stepped:Connect(function()
-	if not checkviridian() then return end
+	if not checkSirius() then return end
 
 	local character = localPlayer.Character
 	if character then
 		-- No Clip
-		local noclipEnabled = viridianValues.actions[1].enabled
-		local flingEnabled = viridianValues.actions[6].enabled
+		local noclipEnabled = siriusValues.actions[1].enabled
+		local flingEnabled = siriusValues.actions[6].enabled
 
 		for _, part in ipairs(character:GetDescendants()) do
 			if part:IsA("BasePart") then
@@ -4261,7 +4338,7 @@ runService.Stepped:Connect(function()
 end)
 
 runService.Heartbeat:Connect(function()
-	if not checkviridian() then return end
+	if not checkSirius() then return end
 
 	local character = localPlayer.Character
 	local primaryPart = character and character.PrimaryPart
@@ -4284,7 +4361,7 @@ runService.Heartbeat:Connect(function()
 		end
 
 		-- Fly
-		if viridianValues.actions[2].enabled then
+		if siriusValues.actions[2].enabled then
 			local camCFrame = camera.CFrame
 			local velocity = Vector3.zero
 			local rotation = camCFrame.Rotation
@@ -4313,10 +4390,10 @@ runService.Heartbeat:Connect(function()
 			end
 
 			local tweenInfo = TweenInfo.new(0.5)
-			tweenService:Create(bodyVelocity, tweenInfo, { Velocity = velocity * viridianValues.sliders[3].value * 45 }):Play()
+			tweenService:Create(bodyVelocity, tweenInfo, { Velocity = velocity * siriusValues.sliders[3].value * 45 }):Play()
 			bodyVelocity.Parent = primaryPart
 
-			if not viridianValues.actions[6].enabled then
+			if not siriusValues.actions[6].enabled then
 				tweenService:Create(bodyGyro, tweenInfo, { CFrame = rotation }):Play()
 				bodyGyro.Parent = primaryPart
 			end
@@ -4328,7 +4405,7 @@ runService.Heartbeat:Connect(function()
 end)
 
 runService.Heartbeat:Connect(function(frame)
-	if not checkviridian() then return end
+	if not checkSirius() then return end
 	if Pro then
 		if checkSetting("Spatial Shield").current and tonumber(checkSetting("Spatial Shield Threshold").current) then
 			for index, sound in next, soundInstances do
@@ -4395,7 +4472,7 @@ for _, instance in next, game:GetDescendants() do
 end
 
 game.DescendantAdded:Connect(function(instance)
-	if checkviridian() then
+	if checkSirius() then
 		if instance:IsA("Sound") then
 			if suppressedSounds[instance.SoundId] then
 				if suppressedSounds[instance.SoundId] == "S" then
@@ -4421,7 +4498,7 @@ end)
 
 
 while task.wait(1) do
-	if not checkviridian() then
+	if not checkSirius() then
 		if espContainer then espContainer:Destroy() end
 		undoAnonymousChanges()
 		break
@@ -4450,7 +4527,7 @@ while task.wait(1) do
 		local disconnectType
 		local foundString
 
-		for _, preDisconnectType in ipairs(viridianValues.disconnectTypes) do
+		for _, preDisconnectType in ipairs(siriusValues.disconnectTypes) do
 			for _, typeString in pairs(preDisconnectType[2]) do
 				if string.find(reasonPrompt, typeString) then
 					disconnectType = preDisconnectType[1]
@@ -4516,34 +4593,34 @@ while task.wait(1) do
 
 		-- Two-Way Adaptive Latency Checks
 		if checkHighPing() then
-			if viridianValues.pingProfile.pingNotificationCooldown <= 0 then
+			if siriusValues.pingProfile.pingNotificationCooldown <= 0 then
 				if checkSetting("Adaptive Latency Warning").current then
 					queueNotification("High Latency Warning","We've noticed your latency has reached a higher value than usual, you may find that you are lagging or your actions are delayed in-game. Consider checking for any background downloads on your machine.", 4370305588)
-					viridianValues.pingProfile.pingNotificationCooldown = 120
+					siriusValues.pingProfile.pingNotificationCooldown = 120
 				end
 			end
 		end
 
-		if viridianValues.pingProfile.pingNotificationCooldown > 0 then
-			viridianValues.pingProfile.pingNotificationCooldown -= 1
+		if siriusValues.pingProfile.pingNotificationCooldown > 0 then
+			siriusValues.pingProfile.pingNotificationCooldown -= 1
 		end
 
 		-- Adaptive frame time checks
-		if viridianValues.frameProfile.frameNotificationCooldown <= 0 then
-			if #viridianValues.frameProfile.fpsQueue > 0 then
-				local avgFPS = viridianValues.frameProfile.totalFPS / #viridianValues.frameProfile.fpsQueue
+		if siriusValues.frameProfile.frameNotificationCooldown <= 0 then
+			if #siriusValues.frameProfile.fpsQueue > 0 then
+				local avgFPS = siriusValues.frameProfile.totalFPS / #siriusValues.frameProfile.fpsQueue
 
-				if avgFPS < viridianValues.frameProfile.lowFPSThreshold then
+				if avgFPS < siriusValues.frameProfile.lowFPSThreshold then
 					if checkSetting("Adaptive Performance Warning").current then
 						queueNotification("Degraded Performance","We've noticed your client's frames per second have decreased. Consider checking for any background tasks or programs on your machine.", 4384400106)
-						viridianValues.frameProfile.frameNotificationCooldown = 120	
+						siriusValues.frameProfile.frameNotificationCooldown = 120	
 					end
 				end
 			end
 		end
 
-		if viridianValues.frameProfile.frameNotificationCooldown > 0 then
-			viridianValues.frameProfile.frameNotificationCooldown -= 1
+		if siriusValues.frameProfile.frameNotificationCooldown > 0 then
+			siriusValues.frameProfile.frameNotificationCooldown -= 1
 		end
 	end
 end
